@@ -14,14 +14,24 @@ deck = deck * 2
 
 # Function to shuffle the deck of cards
 def shuffle_cards():
+    # We want to mix up the cards in the deck so they are in a random order
+    # Let's go through each card in the deck one by one
+    # "enumerate(deck)" gives us both the position (i) and the card at that position
     for i, card in enumerate(deck):
-        if (i==len(deck)-1): 
+        # If we've reached the last card in the deck
+        if (i == len(deck) - 1):
+            # There's no card after this to swap with, so we can stop here
             break
-        # get a random card index to swap with the current card
-        random_index = random.randint(i+1, len(deck)-1 )
-        # swap the current with the random one
+        # We need to pick a random position to swap with, from the cards ahead
+        # "random.randint(a, b)" picks a random number between a and b (including both)
+        # So we pick a random position between the next card (i + 1) and the last card
+        random_index = random.randint(i + 1, len(deck) - 1)
+        # Now, we'll swap the current card with the card at the random position
+        # First, put the card from the random position into the current position
         deck[i] = deck[random_index]
+        # Then, put the original current card into the random position
         deck[random_index] = card
+        # This swaps the two cards in the deck
         
 # function to create cards
 def create_card():
